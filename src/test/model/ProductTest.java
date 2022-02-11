@@ -36,4 +36,13 @@ public class ProductTest {
         assertFalse(p2.isDelivered());
         assertTrue(p3.isDelivered());
     }
+
+
+    @Test
+
+    public void testGetQuantity() {
+        assertEquals(100,p1.getQuantity());
+        assertEquals(250,p2.getQuantity());
+        assertEquals(30,p3.getQuantity());
+    }
 }

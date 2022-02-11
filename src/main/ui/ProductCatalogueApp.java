@@ -5,17 +5,20 @@ import model.ProductCatalogue;
 
 import java.util.Scanner;
 
+//runs the product catalogue app
 public class ProductCatalogueApp {
 
     private ProductCatalogue productCatalogue;
     Scanner productInfo = new Scanner(System.in);
 
+    //EFFECTS: constructs the producvt catalogue app
     public ProductCatalogueApp() {
         productCatalogue = new ProductCatalogue();
         initiate();
 
     }
 
+    //EFFECTS: initiates the user interface
     private void initiate() {
         System.out.println("Product Catalogue");
         features();
@@ -24,6 +27,8 @@ public class ProductCatalogueApp {
         featuresButtons(f);
     }
 
+
+    //EFFECTS: processes user command
     private void featuresButtons(String f) {
         if (f.equals("A")) {
             addProduct();
@@ -40,6 +45,7 @@ public class ProductCatalogueApp {
         }
     }
 
+    //EFFECTS: give details of the product in catalogue
     private void productDetails() {
         for (Product p : productCatalogue.viewCatalogue()) {
             System.out.println("Product name is " + p.getProductName());
@@ -49,6 +55,7 @@ public class ProductCatalogueApp {
         initiate();
     }
 
+    //EFFECT: check whether the product is available to be delivered
     private void isDeliverable() {
         for (Product product : productCatalogue.viewCatalogue()) {
             if (product.productLeft() > 0) {
@@ -60,6 +67,7 @@ public class ProductCatalogueApp {
 
     }
 
+    //EFFECTS: removes the product from the catalogue
     private void removeProduct() {
         System.out.println("Enter the name of the product to be delivered :");
         String name = productInfo.nextLine();
@@ -82,6 +90,7 @@ public class ProductCatalogueApp {
     }
 
 
+    //EFFECTS: adds the product to the catalogue
     private void addProduct() {
         System.out.println("Enter product name ");
         String name = productInfo.nextLine();
@@ -94,6 +103,7 @@ public class ProductCatalogueApp {
         initiate();
     }
 
+    //EFFECTS: provide user options to select from
     private void features() {
         System.out.println("Press A for adding a product");
         System.out.println("Press R for removing a product");

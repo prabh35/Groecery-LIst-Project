@@ -19,9 +19,6 @@ public class Product {
         return this.productName;
     }
 
-    public boolean getDelivered() {
-        return isDeliverable;
-    }
 
     public int getQuantity() {
         return this.quantity;
