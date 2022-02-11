@@ -16,7 +16,7 @@ public class Product {
     }
 
     public String getProductName() {
-        return productName;
+        return this.productName;
     }
 
     public boolean getDelivered() {
@@ -24,7 +24,7 @@ public class Product {
     }
 
     public int getQuantity() {
-        return quantity;
+        return this.quantity;
     }
 
     //REQUIRES: quantity >= sold

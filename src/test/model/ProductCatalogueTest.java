@@ -51,11 +51,12 @@ public class ProductCatalogueTest {
     public void testContainsProduct() {
         catalogue.addProduct(p1);
         catalogue.addProduct(p2);
-        catalogue.addProduct(p3);
+
 
         assertTrue(catalogue.containsProduct(p1.getProductName()));
         assertTrue(catalogue.containsProduct(p2.getProductName()));
-        assertTrue(catalogue.containsProduct(p3.getProductName()));
+        assertFalse(catalogue.containsProduct(p3.getProductName()));
+
 
     }
 
@@ -73,7 +74,7 @@ public class ProductCatalogueTest {
      catalogue.addProduct(p1);
      catalogue.addProduct(p2);
      catalogue.addProduct(p3);
-     assertEquals(3, catalogue.catalogueSize());
+     assertEquals(3, catalogue.viewCatalogue().size());
     }
 
     @Test

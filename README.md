@@ -1,10 +1,11 @@
-# My Personal Project
+# *Product Catalogue Management*
 
-## A subtitle
+## **Overview**
 
-A *bulleted* list:
-- item 1
-- item 2
-- item 3
+ *User Stories for P1* :
+- Able to add product with its name, quantity and needed
+- Able to delete the product 
+- Able to view the product
+- Able to check whether the product can be delivered or not
 
-An example of text with **bold** and *italic* fonts.  
+ 
