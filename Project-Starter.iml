@@ -29,5 +29,7 @@
         <SOURCES />
       </library>
     </orderEntry>
+    <orderEntry type="library" name="json-20210307.jar" level="project" />
+    <orderEntry type="library" name="json-20210307.jar (2)" level="project" />
   </component>
 </module>

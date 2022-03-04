@@ -1,6 +1,9 @@
 package model;
 
-public class Product {
+import org.json.JSONObject;
+import persistence.Writable;
+
+public class Product implements Writable {
 
     private String productName;
     private int quantity;
@@ -36,5 +39,13 @@ public class Product {
             isDeliverable = true;
         }
         return isDeliverable;
+    }
+
+    public JSONObject toJson() {
+        JSONObject json = new JSONObject();
+        json.put("productName", productName);
+        json.put("quantity", quantity);
+        json.put("toBeSold", toBeSold);
+        return json;
     }
 }

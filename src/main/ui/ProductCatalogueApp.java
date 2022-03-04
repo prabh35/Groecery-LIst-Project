@@ -2,7 +2,11 @@ package ui;
 
 import model.Product;
 import model.ProductCatalogue;
+import persistence.JsonReader;
+import persistence.JsonWriter;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.Scanner;
 
 //runs the product catalogue app
@@ -10,8 +14,11 @@ public class ProductCatalogueApp {
 
     private ProductCatalogue productCatalogue;
     Scanner productInfo = new Scanner(System.in);
+    private static final String JSON_STORE = "./data/workroom.json";
+    JsonWriter jsonWriter = new JsonWriter(JSON_STORE);
+    JsonReader jsonReader = new JsonReader(JSON_STORE);
 
-    //EFFECTS: constructs the producvt catalogue app
+    //EFFECTS: constructs the product catalogue app
     public ProductCatalogueApp() {
         productCatalogue = new ProductCatalogue();
         initiate();
@@ -40,8 +47,36 @@ public class ProductCatalogueApp {
             productDetails();
         } else if (f.equals("E")) {
             System.out.println("Thank You ! Have a nice day !");
+        } else if (f.equals("S")) {
+            saveProduct();
+        } else if (f.equals("L")) {
+            loadProduct();
         } else {
             System.out.println("Please enter the correct option");
+        }
+    }
+
+    // MODIFIES: this
+    // EFFECTS: loads workroom from file
+    private void loadProduct() {
+        try {
+            productCatalogue = jsonReader.read();
+            System.out.println("Loaded " + productCatalogue + " from " + JSON_STORE);
+        } catch (IOException e) {
+            System.out.println("Unable to read from file: " + JSON_STORE);
+        }
+        initiate();
+    }
+
+    // EFFECTS: saves the workroom to file
+    private void saveProduct() {
+        try {
+            jsonWriter.open();
+            jsonWriter.write(productCatalogue);
+            jsonWriter.close();
+            System.out.println("Saved " + productCatalogue + " to " + JSON_STORE);
+        } catch (FileNotFoundException e) {
+            System.out.println("Unable to write to file: " + JSON_STORE);
         }
     }
 
@@ -110,6 +145,8 @@ public class ProductCatalogueApp {
         System.out.println("Press D to check if the product is deliverable");
         System.out.println("Press P to see the product information");
         System.out.println("Press E to exit the catalogue");
+        System.out.println("Press S to save the catalogue");
+        System.out.println("Press L to load the catalogue");
     }
 
 

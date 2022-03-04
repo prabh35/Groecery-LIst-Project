@@ -1,0 +1,12 @@
+{"catalogue": [
+  {
+    "toBeSold": 25,
+    "quantity": 100,
+    "productName": "Lay's Indian Magic Masala"
+  },
+  {
+    "toBeSold": 75,
+    "quantity": 250,
+    "productName": "Lay's BBQ"
+  }
+]}

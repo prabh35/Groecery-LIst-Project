@@ -1,9 +1,13 @@
 package model;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+import persistence.Writable;
+
 import java.util.ArrayList;
 import java.util.List;
 
-public class ProductCatalogue {
+public class ProductCatalogue implements Writable {
 
     private List<Product> catalogue;
 
@@ -37,18 +41,6 @@ public class ProductCatalogue {
         return false;
     }
 
-//    // MODIFIES: this
-//    // EFFECTS: returns true if the product is delivered; false otherwise
-//    public boolean isProductDelivered(String name) {
-//        for (Product someProduct : catalogue) {
-//            if (someProduct.getProductName().equals(name) && someProduct.isDelivered()) {
-//                return true;
-//            }
-//        }
-//        return false;
-//    }
-
-
     // EFFECTS: returns the catalogue
     public List<Product> viewCatalogue() {
         return catalogue;
@@ -57,6 +49,24 @@ public class ProductCatalogue {
     // EFFECTS: returns the size of the catalogue
     public int catalogueSize() {
         return catalogue.size();
+    }
+
+
+    public JSONObject toJson() {
+        JSONObject json = new JSONObject();
+        json.put("catalogue", thingiesToJson());
+        return json;
+    }
+
+    // EFFECTS: returns things in this workroom as a JSON array
+    private JSONArray thingiesToJson() {
+        JSONArray jsonArray = new JSONArray();
+
+        for (Product p : catalogue) {
+            jsonArray.put(p.toJson());
+        }
+
+        return jsonArray;
     }
 
 }
