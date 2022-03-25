@@ -1,5 +1,17 @@
-{"catalogue": [{
-    "toBeSold": 10,
-    "quantity": 12,
-    "productName": "Pocket pussy"
-}]}
+{"catalogue": [
+    {
+        "toBeSold": 1,
+        "quantity": 1,
+        "productName": "G"
+    },
+    {
+        "toBeSold": 1,
+        "quantity": 1,
+        "productName": "G"
+    },
+    {
+        "toBeSold": 1,
+        "quantity": 1,
+        "productName": "G"
+    }
+]}
