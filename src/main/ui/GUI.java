@@ -187,8 +187,6 @@ public class GUI implements ActionListener {
             loadProduct();
         } else if (e.getActionCommand().equals("save product")) {
             saveProduct();
-        } else if (e.getActionCommand().equals("back")) {
-            frame.dispose();
         }
 
     }
