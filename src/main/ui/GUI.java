@@ -6,6 +6,7 @@ import persistence.JsonReader;
 import persistence.JsonWriter;
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.FileNotFoundException;
@@ -25,6 +26,8 @@ public class GUI implements ActionListener {
     private static final String JSON_STORE = "./data/workroom.json";
     private JFrame frame;
     private JPanel panel;
+//    private ImageIcon newIcon;
+
 
     //EFFECTS: creates the frame and panel
     public GUI() {
@@ -32,6 +35,10 @@ public class GUI implements ActionListener {
         productCatalogue = new ProductCatalogue();
         jsonWriter = new JsonWriter(JSON_STORE);
         jsonReader = new JsonReader(JSON_STORE);
+//        JLabel image1 = new JLabel();
+//        image1.setIcon(imageOnPanel());
+//        image1.setBounds(200,200,50,50);
+//        panel.add(image1);
         frame = new JFrame("Product-Catalogue Interface");
         frame.setSize(400, 400);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -39,7 +46,16 @@ public class GUI implements ActionListener {
         jbutton();
         frame.add(panel);
         frame.setVisible(true);
+
     }
+
+//    private ImageIcon imageOnPanel() {
+//        ImageIcon imageIcon = new ImageIcon("inventory.png");
+//        Image image = imageIcon.getImage();
+//        Image newImage = image.getScaledInstance(50, 50, Image.SCALE_SMOOTH);
+//        newIcon = new ImageIcon(newImage);
+//        return newIcon;
+//    }
 
     //EFFECTS: creates buttons on panel
     private void jbutton() {
@@ -82,6 +98,10 @@ public class GUI implements ActionListener {
         toBeSold.setBounds(70,60,30,35);
         quantity.setBounds(70,100,30,35);
 
+        panel.add(productName);
+        panel.add(toBeSold);
+        panel.add(quantity);
+
         toBeContinued();
 
 
@@ -93,22 +113,20 @@ public class GUI implements ActionListener {
         JLabel label1 = new JLabel("Product Name");
         JLabel label2 = new JLabel("To Be Sold");
         JLabel label3 = new JLabel("Quantity");
+
         label1.setBounds(100,20,100,35);
         label2.setBounds(100,60,100,35);
         label3.setBounds(100,100,100,35);
+
         panel.add(label1);
         panel.add(label2);
         panel.add(label3);
-
-        panel.add(productName);
-        panel.add(toBeSold);
-        panel.add(quantity);
 
         JButton add = new JButton("Add");
         add.setActionCommand("add");
         add.addActionListener(this);
         add.setBounds(200,300,30,30);
-        toBeContinued();
+
 
         panel.add(add);
         panel.setLayout(null);
@@ -188,7 +206,6 @@ public class GUI implements ActionListener {
         } else if (e.getActionCommand().equals("save product")) {
             saveProduct();
         }
-
     }
 
     //EFFECTS: runs the GUI
