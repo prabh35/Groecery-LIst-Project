@@ -1,5 +1,7 @@
 package ui;
 
+import model.Event;
+import model.EventLog;
 import model.Product;
 import model.ProductCatalogue;
 import persistence.JsonReader;
@@ -9,6 +11,8 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -42,7 +46,7 @@ public class GUI implements ActionListener {
         jbutton();
         frame.add(panel);
         frame.setVisible(true);
-
+        windowListener();
     }
 
     private ImageIcon imageOnPanel() {
@@ -173,6 +177,7 @@ public class GUI implements ActionListener {
         try {
             productCatalogue = jsonReader.read();
             System.out.println("Loaded " + productCatalogue + " from " + JSON_STORE);
+            EventLog.getInstance().logEvent(new Event("Loaded Catalogue !!"));
         } catch (IOException e) {
             System.out.println("Unable to read from file: " + JSON_STORE);
         }
@@ -185,10 +190,34 @@ public class GUI implements ActionListener {
             jsonWriter.write(productCatalogue);
             jsonWriter.close();
             System.out.println("Saved " + productCatalogue + " to " + JSON_STORE);
+            EventLog.getInstance().logEvent(new Event("Saved Catalogue !!."));
         } catch (FileNotFoundException e) {
             System.out.println("Unable to write to file: " + JSON_STORE);
         }
     }
+
+
+    //EFFECTS: print the event
+    private void logPrint(EventLog instance) {
+        for (Event next : instance) {
+            System.out.println(next.toString());
+        }
+    }
+
+    //EFFECTS: prints logged on exit
+    public void windowListener() {
+
+        frame.addWindowListener(new WindowAdapter() {
+
+            public void windowClosing(WindowEvent e) {
+                logPrint(EventLog.getInstance());
+                System.exit(0);
+
+            }
+        });
+
+    }
+
 
     @Override
     //EFFECTS: action listener

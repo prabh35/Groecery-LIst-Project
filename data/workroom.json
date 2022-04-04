@@ -1,5 +1,12 @@
-{"catalogue": [{
-    "toBeSold": 23,
-    "quantity": 1,
-    "productName": "a"
-}]}
+{"catalogue": [
+    {
+        "toBeSold": 1,
+        "quantity": 1,
+        "productName": "a"
+    },
+    {
+        "toBeSold": 11,
+        "quantity": 11,
+        "productName": "a1"
+    }
+]}

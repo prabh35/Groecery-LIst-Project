@@ -22,13 +22,14 @@ public class ProductCatalogue implements Writable {
     // EFFECTS: adds product to the catalogue
     public void addProduct(Product product) {
         catalogue.add(product);
-
+        EventLog.getInstance().logEvent(new Event("Product Added !!"));
     }
 
     // MODIFIES: this
     // EFFECTS: removes product from the catalogue
     public void removeProduct(Product product) {
         catalogue.remove(product);
+        EventLog.getInstance().logEvent(new Event("Product Removed !!"));
     }
 
     // EFFECTS: returns true if product is in catalogue, false otherwise
